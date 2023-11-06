@@ -1,14 +1,15 @@
+import 'dotenv/config.js';
 import { fetchTaskInput } from './api/fetchTaskInput.js';
 import { fetchTaskToken } from './api/fetchTaskToken.js';
 import { sendAnswer } from './api/sendAnswer.js';
 import { solutions } from './solutions/solutions.js';
 import { isTaskName } from './utils/isTaskName.js';
 import { Readline } from './utils/readline.js';
+import { tasksApiKey } from './utils/envs.js';
 
 const readline = new Readline();
 
-// get API key and task name from user
-const apiKey = await readline.enterValue('API Key');
+// get task name from user
 const taskName = await readline.enterValue('task name');
 readline.close();
 
@@ -19,7 +20,7 @@ if (!isTaskName(taskName)) {
 }
 
 // fetch task token and task input
-const taskToken = await fetchTaskToken(apiKey, taskName);
+const taskToken = await fetchTaskToken(tasksApiKey, taskName);
 const taskInput = await fetchTaskInput(taskToken);
 
 // print task input for user

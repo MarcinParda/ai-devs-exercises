@@ -1,4 +1,7 @@
-export async function sendAnswer(taskToken: string, answer: string) {
+export async function sendAnswer(
+  taskToken: string,
+  answer: string | unknown[]
+) {
   const apiAnswerUrl = `https://zadania.aidevs.pl/answer/${taskToken}`;
 
   const response = await fetch(apiAnswerUrl, {
@@ -6,9 +9,7 @@ export async function sendAnswer(taskToken: string, answer: string) {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({
-      answer,
-    }),
+    body: JSON.stringify({ answer }),
   });
 
   if (!response.ok) {
