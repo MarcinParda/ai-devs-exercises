@@ -1,4 +1,6 @@
-export async function fetchTaskInput(taskToken: string) {
+import { InputData } from '../types/InputData.js';
+
+export async function fetchTaskInput(taskToken: string): Promise<InputData> {
   const taskInputUrl = `https://zadania.aidevs.pl/task/${taskToken}`;
 
   const taskInputResponse = await fetch(taskInputUrl, {
