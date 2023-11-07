@@ -1,6 +1,8 @@
-import { InputData } from '../types/InputData.js';
+import { ModerationInputData } from '../types/InputData.js';
 
-export async function fetchTaskInput(taskToken: string): Promise<InputData> {
+export async function fetchTaskInput(
+  taskToken: string
+): Promise<ModerationInputData> {
   const taskInputUrl = `https://zadania.aidevs.pl/task/${taskToken}`;
 
   const taskInputResponse = await fetch(taskInputUrl, {

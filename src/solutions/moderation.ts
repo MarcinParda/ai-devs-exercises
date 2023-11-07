@@ -1,7 +1,7 @@
-import { InputData } from '../types/InputData.js';
+import { ModerationInputData } from '../types/InputData.js';
 import { openai } from '../utils/openai.js';
 
-export async function moderation(inputData: InputData) {
+export async function moderation(inputData: ModerationInputData) {
   const moderation = await openai.moderations.create({
     input: inputData.input,
     model: 'text-moderation-latest',
