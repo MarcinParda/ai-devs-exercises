@@ -1,4 +1,4 @@
-export async function fetchTaskInput(taskToken: string): Promise<any> {
+export async function fetchTaskInput<InputData>(taskToken: string) {
   const taskInputUrl = `https://zadania.aidevs.pl/task/${taskToken}`;
 
   const taskInputResponse = await fetch(taskInputUrl, {
@@ -13,5 +13,5 @@ export async function fetchTaskInput(taskToken: string): Promise<any> {
     process.exit(1);
   }
 
-  return await taskInputResponse.json();
+  return (await taskInputResponse.json()) as InputData;
 }

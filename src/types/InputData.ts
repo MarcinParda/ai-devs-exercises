@@ -1,19 +1,16 @@
-export type InputData = ModerationInputData | BloggerInputData;
-
-export interface ModerationInputData {
+interface BaseInputData {
   code: number;
   msg: string;
+}
+
+export interface ModerationInputData extends BaseInputData {
   input: string[];
 }
 
-export interface BloggerInputData {
-  code: number;
-  msg: string;
+export interface BloggerInputData extends BaseInputData {
   blog: string[];
 }
 
-export interface LiarInputData {
-  code: number;
-  msg: string;
+export interface LiarInputData extends BaseInputData {
   answer: string;
 }

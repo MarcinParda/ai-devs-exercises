@@ -1,11 +1,10 @@
 import 'dotenv/config.js';
-import { fetchTaskInput } from './api/fetchTaskInput.js';
-import { fetchTaskToken } from './api/fetchTaskToken.js';
-import { sendAnswer } from './api/sendAnswer.js';
-import { solutions } from './solutions/solutions.js';
 import { isTaskName } from './utils/isTaskName.js';
 import { Readline } from './utils/readline.js';
-import { tasksApiKey } from './utils/envs.js';
+import { blogger } from './solutions/blogger.js';
+import { moderation } from './solutions/moderation.js';
+import { liar } from './solutions/liar.js';
+import { AnswerResponse } from './api/sendAnswer.js';
 
 const readline = new Readline();
 
@@ -19,21 +18,20 @@ if (!isTaskName(taskName)) {
   );
 }
 
-// fetch task token and task input
-const taskToken = await fetchTaskToken(tasksApiKey, taskName);
-const taskInput = await fetchTaskInput(taskToken);
+let answerResponse: AnswerResponse;
 
-// print task input for user
-console.log(taskInput);
+switch (taskName) {
+  case 'moderation':
+    answerResponse = await moderation(taskName);
+    break;
+  case 'blogger':
+    answerResponse = await blogger(taskName);
+    break;
+  case 'liar':
+    answerResponse = await liar(taskName);
+    break;
+  default:
+    throw new Error('We do not have a solution for this task');
+}
 
-// get answer from user
-const answer = await solutions[taskName](taskInput);
-
-// print answer for user
-console.log(answer);
-
-// send answer to API
-const answerResponse = await sendAnswer(taskToken, answer);
-
-// print answer response for user
 console.log(answerResponse);

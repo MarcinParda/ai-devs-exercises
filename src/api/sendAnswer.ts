@@ -1,4 +1,10 @@
-export async function sendAnswer(
+export interface AnswerResponse {
+  code: number;
+  msg: string;
+  note: string;
+}
+
+export async function sendJsonAnswer(
   taskToken: string,
   answer: string | unknown[]
 ) {
@@ -17,5 +23,5 @@ export async function sendAnswer(
     process.exit(1);
   }
 
-  return await response.json();
+  return (await response.json()) as AnswerResponse;
 }

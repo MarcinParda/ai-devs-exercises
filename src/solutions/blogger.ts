@@ -1,11 +1,17 @@
+import { fetchTaskInput } from '../api/fetchTaskInput.js';
+import { fetchTaskToken } from '../api/fetchTaskToken.js';
+import { sendJsonAnswer } from '../api/sendAnswer.js';
 import { BloggerInputData } from '../types/InputData.js';
+import { TaskName } from '../types/Tasks.js';
 import { openai } from '../utils/openai.js';
 
 function createPrompt(headline: string) {
   return `Zachowuj się jak profesjonalny bloger. Napisz pięciozdaniowy rozdział o tytule: \n\n${headline} do artukułu o pizzy margaritta. Wazne, aby tytuł pozostał taki sam i był w pierwszym zdaniu rozdziału. \n\nRozdział:`;
 }
 
-export async function blogger(inputData: BloggerInputData) {
+export async function blogger(taskName: TaskName) {
+  const taskToken = await fetchTaskToken(taskName);
+  const inputData = await fetchTaskInput<BloggerInputData>(taskToken);
   const requests = inputData.blog.map((headline) => {
     return openai.chat.completions.create({
       messages: [{ content: createPrompt(headline), role: 'user' }],
@@ -19,5 +25,5 @@ export async function blogger(inputData: BloggerInputData) {
     return completion.choices[0].message.content;
   });
 
-  return answer;
+  return await sendJsonAnswer(taskToken, answer);
 }
