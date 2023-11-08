@@ -11,3 +11,9 @@ export interface BloggerInputData {
   msg: string;
   blog: string[];
 }
+
+export interface LiarInputData {
+  code: number;
+  msg: string;
+  answer: string;
+}
