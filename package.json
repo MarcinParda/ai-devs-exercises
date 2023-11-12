@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "serve": "npx tsc && node dist/index.js",
+    "serve": "npx tsc && bun dist/index.js",
     "start": "node dist/index.js",
     "build": "npx tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -19,7 +19,7 @@
   "type": "module",
   "dependencies": {
     "dotenv": "^16.3.1",
-    "langchain": "0.0.182-rc.0",
+    "langchain": "^0.0.186",
     "openai": "^4.16.0"
   }
 }

@@ -14,3 +14,8 @@ export interface BloggerInputData extends BaseInputData {
 export interface LiarInputData extends BaseInputData {
   answer: string;
 }
+
+export interface InpromptInputData extends BaseInputData {
+  input: string[];
+  question: string;
+}

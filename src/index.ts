@@ -5,6 +5,7 @@ import { blogger } from './solutions/blogger.js';
 import { moderation } from './solutions/moderation.js';
 import { liar } from './solutions/liar.js';
 import { AnswerResponse } from './api/sendAnswer.js';
+import { inprompt } from './solutions/inprompt.js';
 
 const readline = new Readline();
 
@@ -30,8 +31,13 @@ switch (taskName) {
   case 'liar':
     answerResponse = await liar(taskName);
     break;
+  case 'inprompt':
+    answerResponse = await inprompt(taskName);
+    break;
   default:
     throw new Error('We do not have a solution for this task');
 }
 
 console.log(answerResponse);
+
+process.exit(0);
