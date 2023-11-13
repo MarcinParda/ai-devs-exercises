@@ -1,7 +1,6 @@
 import { fetchTaskToken } from '../api/fetchTaskToken.js';
 import { sendJsonAnswer } from '../api/sendAnswer.js';
 import { LiarInputData } from '../types/InputData.js';
-import { TaskName } from '../types/Tasks.js';
 import { openai } from '../utils/openai.js';
 
 const question = 'What is the capital of Poland?';
@@ -10,8 +9,7 @@ const createPrompt = (question: string, liarAnswer: string) => {
   return `Question: ${question}\nAnswer: ${liarAnswer}\nIs this answer correct? Answer only with YES or NO`;
 };
 
-const taskName: TaskName = 'liar';
-const taskToken = await fetchTaskToken(taskName);
+const taskToken = await fetchTaskToken('liar');
 
 // get the liar answer
 const apiTokenUrl = `https://zadania.aidevs.pl/task/${taskToken}`;

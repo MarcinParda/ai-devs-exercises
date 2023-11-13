@@ -2,15 +2,13 @@ import { fetchTaskInput } from '../api/fetchTaskInput.js';
 import { fetchTaskToken } from '../api/fetchTaskToken.js';
 import { sendJsonAnswer } from '../api/sendAnswer.js';
 import { BloggerInputData } from '../types/InputData.js';
-import { TaskName } from '../types/Tasks.js';
 import { openai } from '../utils/openai.js';
 
 function createPrompt(headline: string) {
   return `Zachowuj się jak profesjonalny bloger. Napisz pięciozdaniowy rozdział o tytule: \n\n${headline} do artukułu o pizzy margaritta. Wazne, aby tytuł pozostał taki sam i był w pierwszym zdaniu rozdziału. \n\nRozdział:`;
 }
 
-const taskName: TaskName = 'blogger';
-const taskToken = await fetchTaskToken(taskName);
+const taskToken = await fetchTaskToken('blogger');
 const inputData = await fetchTaskInput<BloggerInputData>(taskToken);
 const requests = inputData.blog.map((headline) => {
   return openai.chat.completions.create({

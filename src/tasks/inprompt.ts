@@ -2,7 +2,6 @@ import { fetchTaskInput } from '../api/fetchTaskInput.js';
 import { fetchTaskToken } from '../api/fetchTaskToken.js';
 import { sendJsonAnswer } from '../api/sendAnswer.js';
 import { InpromptInputData } from '../types/InputData.js';
-import { TaskName } from '../types/Tasks.js';
 import { ChatOpenAI } from 'langchain/chat_models/openai';
 import { HumanMessage, SystemMessage } from 'langchain/schema';
 import fs from 'fs';
@@ -36,8 +35,7 @@ const createInpromptFileFromContent = (content: string[]) => {
   fs.writeFileSync(filePath, JSON.stringify(fileContent, null, 2));
 };
 
-const taskName: TaskName = 'inprompt';
-const taskToken = await fetchTaskToken(taskName);
+const taskToken = await fetchTaskToken('inprompt');
 const inputData = await fetchTaskInput<InpromptInputData>(taskToken);
 
 createInpromptFileFromContent(inputData.input);

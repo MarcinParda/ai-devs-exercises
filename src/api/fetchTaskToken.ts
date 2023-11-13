@@ -1,8 +1,7 @@
-import { TaskName } from '../types/Tasks.js';
 import { TokenData } from '../types/TokenData.js';
 import { tasksApiKey } from '../utils/envs.js';
 
-export async function fetchTaskToken(taskName: TaskName) {
+export async function fetchTaskToken(taskName: string) {
   const apiTokenUrl = `https://zadania.aidevs.pl/token/${taskName}`;
 
   const response = await fetch(apiTokenUrl, {

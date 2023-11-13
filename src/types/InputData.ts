@@ -19,3 +19,7 @@ export interface InpromptInputData extends BaseInputData {
   input: string[];
   question: string;
 }
+
+export interface WhisperInputData extends BaseInputData {
+  hint: string;
+}

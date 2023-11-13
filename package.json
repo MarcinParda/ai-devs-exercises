@@ -8,7 +8,8 @@
     "embedding": "bun src/tasks/embedding.ts",
     "inprompt": "bun src/tasks/inprompt.ts",
     "liar": "bun src/tasks/liar.ts",
-    "moderation": "bun src/tasks/moderation.ts"
+    "moderation": "bun src/tasks/moderation.ts",
+    "whisper": "bun src/tasks/whisper.ts"
   },
   "keywords": [
     "ai",
