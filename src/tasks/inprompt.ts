@@ -36,44 +36,42 @@ const createInpromptFileFromContent = (content: string[]) => {
   fs.writeFileSync(filePath, JSON.stringify(fileContent, null, 2));
 };
 
-export async function inprompt(taskName: TaskName) {
-  const taskToken = await fetchTaskToken(taskName);
-  const inputData = await fetchTaskInput<InpromptInputData>(taskToken);
+const taskName: TaskName = 'inprompt';
+const taskToken = await fetchTaskToken(taskName);
+const inputData = await fetchTaskInput<InpromptInputData>(taskToken);
 
-  if (!fs.existsSync(filePath)) {
-    createInpromptFileFromContent(inputData.input);
-  }
+createInpromptFileFromContent(inputData.input);
 
-  const fileContent = fs.readFileSync(filePath, 'utf-8');
-  const documents = JSON.parse(fileContent) as DocumentDescription[];
+const fileContent = fs.readFileSync(filePath, 'utf-8');
+const documents = JSON.parse(fileContent) as DocumentDescription[];
 
-  const model = new ChatOpenAI({ maxConcurrency: 5 });
+const model = new ChatOpenAI({ maxConcurrency: 5 });
 
-  const { content: person } = await model.call([
-    new SystemMessage(
-      `You will be given a QUESTION about person. In your answer return only the name of that person.
+const { content: person } = await model.call([
+  new SystemMessage(
+    `You will be given a QUESTION about person. In your answer return only the name of that person.
       \n For example for QUESTION:
       \n Czy Alojzy lubi jeść placki? 
       \n Your answer should be:
       \n Alojzy
       \n\n###\n\n`
-    ),
-    new HumanMessage(`QUESTION: ${inputData.question}`),
-  ]);
+  ),
+  new HumanMessage(`QUESTION: ${inputData.question}`),
+]);
 
-  const documentsAboutPerson = documents
-    .filter((document) => document.metadata.person === person)
-    .map((document) => document.pageContent)
-    .join('\n');
+const documentsAboutPerson = documents
+  .filter((document) => document.metadata.person === person)
+  .map((document) => document.pageContent)
+  .join('\n');
 
-  const { content: answer } = await model.call([
-    new SystemMessage(
-      `Based on provided documents, answer the question. 
+const { content: answer } = await model.call([
+  new SystemMessage(
+    `Based on provided documents, answer the question. 
       \n Documents: 
       \n ${documentsAboutPerson}`
-    ),
-    new HumanMessage(`Question: ${inputData.question}`),
-  ]);
+  ),
+  new HumanMessage(`Question: ${inputData.question}`),
+]);
 
-  return await sendJsonAnswer(taskToken, answer as string);
-}
+const answerResponse = await sendJsonAnswer(taskToken, answer as string);
+console.log(answerResponse);

@@ -4,11 +4,11 @@
   "description": "Repository for AI Devs course exercises",
   "main": "index.js",
   "scripts": {
-    "blogger": "bun tasks/blogger.ts",
-    "embedding": "bun tasks/embedding.ts",
-    "inprompt": "bun tasks/inprompt.ts",
-    "liar": "bun tasks/liar.ts",
-    "moderation": "bun tasks/moderation.ts"
+    "blogger": "bun src/tasks/blogger.ts",
+    "embedding": "bun src/tasks/embedding.ts",
+    "inprompt": "bun src/tasks/inprompt.ts",
+    "liar": "bun src/tasks/liar.ts",
+    "moderation": "bun src/tasks/moderation.ts"
   },
   "keywords": [
     "ai",

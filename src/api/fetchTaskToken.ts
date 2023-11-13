@@ -17,7 +17,7 @@ export async function fetchTaskToken(taskName: TaskName) {
 
   // handle response errors
   if (!response.ok) {
-    console.log('Error:', response.statusText);
+    console.log('Error when fetching task token:', response.statusText);
     process.exit(1);
   }
 
@@ -25,7 +25,7 @@ export async function fetchTaskToken(taskName: TaskName) {
 
   // handle response code errors
   if (tokenData.code !== 0) {
-    console.log('Error:', tokenData.msg);
+    console.log('Error when fetching task token:', tokenData.msg);
     process.exit(1);
   }
 

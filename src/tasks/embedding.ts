@@ -1,7 +1,7 @@
 import { OpenAIEmbeddings } from 'langchain/embeddings/openai';
-import { fetchTaskToken } from '../api/fetchTaskToken.js';
 import { TaskName } from '../types/Tasks.js';
 import { sendJsonAnswer } from '../api/sendAnswer.js';
+import { fetchTaskToken } from '../api/fetchTaskToken.js';
 
 const taskName: TaskName = 'embedding';
 const taskToken = await fetchTaskToken(taskName);
