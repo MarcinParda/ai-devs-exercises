@@ -6,6 +6,7 @@ import { moderation } from './solutions/moderation.js';
 import { liar } from './solutions/liar.js';
 import { AnswerResponse } from './api/sendAnswer.js';
 import { inprompt } from './solutions/inprompt.js';
+import { embedding } from './solutions/embedding.js';
 
 const readline = new Readline();
 
@@ -33,6 +34,9 @@ switch (taskName) {
     break;
   case 'inprompt':
     answerResponse = await inprompt(taskName);
+    break;
+  case 'embedding':
+    answerResponse = await embedding(taskName);
     break;
   default:
     throw new Error('We do not have a solution for this task');
