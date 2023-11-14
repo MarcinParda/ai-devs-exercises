@@ -23,3 +23,9 @@ export interface InpromptInputData extends BaseInputData {
 export interface WhisperInputData extends BaseInputData {
   hint: string;
 }
+
+export interface RodoInputData extends BaseInputData {
+  hint1: string;
+  hint2: string;
+  hint3: string;
+}

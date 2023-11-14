@@ -10,7 +10,8 @@
     "liar": "bun src/tasks/liar.ts",
     "moderation": "bun src/tasks/moderation.ts",
     "whisper": "bun src/tasks/whisper.ts",
-    "functions": "bun src/tasks/functions.ts"
+    "functions": "bun src/tasks/functions.ts",
+    "rodo": "bun src/tasks/rodo.ts"
   },
   "keywords": [
     "ai",

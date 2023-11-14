@@ -1,7 +1,5 @@
-import { fetchTaskInput } from '../api/fetchTaskInput.js';
 import { fetchTaskToken } from '../api/fetchTaskToken.js';
 import { sendJsonAnswer } from '../api/sendAnswer.js';
-import { WhisperInputData } from '../types/InputData.js';
 
 const taskToken = await fetchTaskToken('functions');
 

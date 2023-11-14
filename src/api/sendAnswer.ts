@@ -19,7 +19,7 @@ export async function sendJsonAnswer(
   });
 
   if (!response.ok) {
-    console.log('Error:', response.statusText);
+    console.log('Send json answer error:', await response.json());
     process.exit(1);
   }
 
