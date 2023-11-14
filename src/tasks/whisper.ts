@@ -3,7 +3,6 @@ import { fetchTaskInput } from '../api/fetchTaskInput.js';
 import { fetchTaskToken } from '../api/fetchTaskToken.js';
 import { sendJsonAnswer } from '../api/sendAnswer.js';
 import { WhisperInputData } from '../types/InputData.js';
-import { openai } from '../utils/openai.js';
 import { fetchMP3Blob } from '../utils/fetchMP3Blob.js';
 import { mp3BlobToFile } from '../utils/mp3BlobToFile.js';
 

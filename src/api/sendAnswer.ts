@@ -6,7 +6,7 @@ export interface AnswerResponse {
 
 export async function sendJsonAnswer(
   taskToken: string,
-  answer: string | unknown[]
+  answer: string | unknown[] | Record<string, unknown>
 ) {
   const apiAnswerUrl = `https://zadania.aidevs.pl/answer/${taskToken}`;
 
