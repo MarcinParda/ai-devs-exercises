@@ -16,16 +16,14 @@ export async function fetchTaskToken(taskName: string) {
 
   // handle response errors
   if (!response.ok) {
-    console.log('Error when fetching task token:', response.statusText);
-    process.exit(1);
+    throw new Error(`Error when fetching task token: ${response.statusText}`);
   }
 
   const tokenData = (await response.json()) as TokenData;
 
   // handle response code errors
   if (tokenData.code !== 0) {
-    console.log('Error when fetching task token:', tokenData.msg);
-    process.exit(1);
+    throw new Error(`Error when fetching task token: ${tokenData.msg}`);
   }
 
   return tokenData.token;

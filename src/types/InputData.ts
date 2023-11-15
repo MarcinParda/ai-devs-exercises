@@ -30,6 +30,6 @@ export interface RodoInputData extends BaseInputData {
   hint3: string;
 }
 export interface ScrapperInputData extends BaseInputData {
-  input: string[];
+  input: string;
   question: string;
 }

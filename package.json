@@ -25,6 +25,7 @@
   "type": "module",
   "dependencies": {
     "langchain": "^0.0.186",
-    "openai": "^4.16.0"
+    "openai": "^4.16.0",
+    "puppeteer": "^21.5.2"
   }
 }
