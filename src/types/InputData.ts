@@ -38,3 +38,7 @@ export interface ScrapperInputData extends BaseInputData {
 export interface WhoamiInputData extends BaseInputData {
   hint: string;
 }
+
+export interface SearchInputData extends BaseInputData {
+  question: string;
+}
