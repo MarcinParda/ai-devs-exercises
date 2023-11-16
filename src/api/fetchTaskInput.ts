@@ -9,7 +9,10 @@ export async function fetchTaskInput<InputData>(taskToken: string) {
   });
 
   if (!taskInputResponse.ok) {
-    console.log('Error:', taskInputResponse.statusText);
+    console.log(
+      'Error when fetching input task:',
+      taskInputResponse.statusText
+    );
     process.exit(1);
   }
 

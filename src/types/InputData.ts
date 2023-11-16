@@ -29,7 +29,12 @@ export interface RodoInputData extends BaseInputData {
   hint2: string;
   hint3: string;
 }
+
 export interface ScrapperInputData extends BaseInputData {
   input: string;
   question: string;
+}
+
+export interface WhoamiInputData extends BaseInputData {
+  hint: string;
 }
