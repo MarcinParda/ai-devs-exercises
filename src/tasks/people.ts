@@ -56,10 +56,10 @@ const parametersSchema = z.object({
   questionType: z
     .enum(['color', 'food', 'placeOfResidence'])
     .describe('About what the question is?'),
-  nonDiminutiveName: z
+  non_diminutive_first_name: z
     .string()
     .describe('The non-diminutive name of the person in the question.'),
-  surname: z.string().describe('The surname of the person in the question.'),
+  lastname: z.string().describe('The lastname of the person in the question.'),
 });
 
 const extractionFunctionSchema = {
@@ -71,15 +71,13 @@ const extractionFunctionSchema = {
 const taskToken = await fetchTaskToken('people');
 const inputData = await fetchTaskInput<PeopleInputData>(taskToken);
 
-console.log(inputData);
-
 const database: CrutialPersonData[] = (people as Person[]).map((person) => ({
   fullname: `${person.imie} ${person.nazwisko}`,
   color: person.ulubiony_kolor,
   about: person.o_mnie,
 }));
 
-const query = 'co lubi jeść Tomek Bzik?';
+const query = inputData.question;
 
 const fnCallingModel = new ChatOpenAI({
   modelName: 'gpt-4',
@@ -95,10 +93,13 @@ if (!parametersAsString) {
   throw new Error('Parameters not found');
 }
 
-const parameters = parametersSchema.parse(JSON.parse(parametersAsString));
+const parameters = JSON.parse(parametersAsString) as {
+  questionType: string;
+  non_diminutive_first_name: string;
+  lastname: string;
+};
 
-const fullname = `${parameters.nonDiminutiveName} ${parameters.surname}`;
-console.log(fullname);
+const fullname = `${parameters.non_diminutive_first_name} ${parameters.lastname}`;
 
 let answer = `I don't know`;
 
