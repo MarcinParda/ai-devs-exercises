@@ -42,3 +42,10 @@ export interface WhoamiInputData extends BaseInputData {
 export interface SearchInputData extends BaseInputData {
   question: string;
 }
+
+export interface PeopleInputData extends BaseInputData {
+  data: string;
+  question: string;
+  hint1: string;
+  hint2: string;
+}

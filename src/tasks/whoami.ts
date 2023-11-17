@@ -1,10 +1,9 @@
-import puppeteer from 'puppeteer';
 import { fetchTaskInput } from '../api/fetchTaskInput.js';
 import { fetchTaskToken } from '../api/fetchTaskToken.js';
 import { sendJsonAnswer } from '../api/sendAnswer.js';
 import { WhoamiInputData } from '../types/InputData.js';
 import { ChatOpenAI } from 'langchain/chat_models/openai';
-import { HumanMessage, SystemMessage } from 'langchain/schema';
+import { SystemMessage } from 'langchain/schema';
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
