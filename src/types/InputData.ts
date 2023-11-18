@@ -49,3 +49,10 @@ export interface PeopleInputData extends BaseInputData {
   hint1: string;
   hint2: string;
 }
+
+export interface KnowledgeInputData extends BaseInputData {
+  data: string;
+  question: string;
+  'database #1': string;
+  'database #2': string;
+}

@@ -15,7 +15,8 @@
     "scrapper": "bun src/tasks/scrapper.ts",
     "whoami": "bun src/tasks/whoami.ts",
     "search": "bun src/tasks/search.ts",
-    "people": "bun src/tasks/people.ts"
+    "people": "bun src/tasks/people.ts",
+    "knowledge": "bun src/tasks/knowledge.ts"
   },
   "keywords": [
     "ai",
