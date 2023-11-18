@@ -56,3 +56,10 @@ export interface KnowledgeInputData extends BaseInputData {
   'database #1': string;
   'database #2': string;
 }
+
+export interface ToolsInputData extends BaseInputData {
+  hint: string;
+  'example for ToDo': string;
+  'example for Calendar': string;
+  question: string;
+}

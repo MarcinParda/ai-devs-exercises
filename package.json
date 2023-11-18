@@ -16,7 +16,8 @@
     "whoami": "bun src/tasks/whoami.ts",
     "search": "bun src/tasks/search.ts",
     "people": "bun src/tasks/people.ts",
-    "knowledge": "bun src/tasks/knowledge.ts"
+    "knowledge": "bun src/tasks/knowledge.ts",
+    "tools": "bun src/tasks/tools.ts"
   },
   "keywords": [
     "ai",
