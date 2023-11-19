@@ -63,3 +63,8 @@ export interface ToolsInputData extends BaseInputData {
   'example for Calendar': string;
   question: string;
 }
+
+export interface GnomeInputData extends BaseInputData {
+  hint: string;
+  url: string;
+}

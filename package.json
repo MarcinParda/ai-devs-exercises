@@ -17,7 +17,8 @@
     "search": "bun src/tasks/search.ts",
     "people": "bun src/tasks/people.ts",
     "knowledge": "bun src/tasks/knowledge.ts",
-    "tools": "bun src/tasks/tools.ts"
+    "tools": "bun src/tasks/tools.ts",
+    "gnome": "bun src/tasks/gnome.ts"
   },
   "keywords": [
     "ai",
