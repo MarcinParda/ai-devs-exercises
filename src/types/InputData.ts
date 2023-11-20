@@ -68,3 +68,10 @@ export interface GnomeInputData extends BaseInputData {
   hint: string;
   url: string;
 }
+
+export interface MemeInputData extends BaseInputData {
+  service: string;
+  image: string;
+  text: string;
+  hint: string;
+}
