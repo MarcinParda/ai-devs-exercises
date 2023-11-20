@@ -18,7 +18,9 @@
     "people": "bun src/tasks/people.ts",
     "knowledge": "bun src/tasks/knowledge.ts",
     "tools": "bun src/tasks/tools.ts",
-    "gnome": "bun src/tasks/gnome.ts"
+    "gnome": "bun src/tasks/gnome.ts",
+    "ownapi": "bun src/tasks/ownapi.ts",
+    "ownapipro": "bun src/tasks/ownapipro.ts"
   },
   "keywords": [
     "ai",
